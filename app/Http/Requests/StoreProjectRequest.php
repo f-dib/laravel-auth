@@ -11,7 +11,7 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,29 @@ class StoreProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required | max:255',
+            'description' => 'required | max:5000',
+            'src' => 'required | max:1000',
+            'technology' => 'required | max:5000',
+            'github_link' => 'required | max:1000',
+            'date' => 'required | max:10',
+        ];
+    }
+
+    public function messages(): array {
+        return [
+            'name.required' => '* Devi inserire un nome valido',
+            'name.max' => '* Il tuo nome ha superato il numero massimo di caratteri :max caratteri', 
+            'description.required' => '* Devi inserire una descrizione valida',
+            'description.max' => '* La tua descrizione ha superato il numero massimo di caratteri :max caratteri', 
+            'src.required' => '* Devi inserire un link valido', 
+            'src.max' => '* Il tuo link ha superato il numero massimo di caratteri :max caratteri', 
+            'technology.required' => '* Devi inserire un testo valido',
+            'technology.max' => '* Il tuo testo ha superato il numero massimo di caratteri :max caratteri', 
+            'github_link.required' => '* Devi inserire un link valido',
+            'github_link.max' => '* Il tuo link ha superato il numero massimo di caratteri :max caratteri', 
+            'date.required' => '* Devi inserire una data valida in formato americano (YYYY-MM-DD)',
+            'date.max' => '* La data inserita ha superato il numero massimo di caratteri :max caratteri', 
         ];
     }
 }

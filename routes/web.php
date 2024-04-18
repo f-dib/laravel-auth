@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,11 +32,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// route to admin page
+// route to all admin page
 Route::middleware(['auth', 'verified'])
         ->name('admin.')
         ->prefix('admin')
         ->group(function() {
             Route::get('/', [DashboardController::class, 'index'])->name('index');
             Route::get('/users', [DashboardController::class, 'users'])->name('users');
+            Route::resource('/projects', ProjectController::class);
         });

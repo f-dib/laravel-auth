@@ -4,6 +4,12 @@
 
     <div class="container py-5">
 
+        @if($projects->count() == 0)
+            <div class="text-center">
+                <h3>Non ci sono progetti salvati</h3>
+            </div>
+        @endif
+
         <div class="d-flex flex-wrap gap-3"> 
             @foreach($projects as $project)
     
@@ -20,7 +26,7 @@
             @endforeach
         </div>
 
-        <div class="text-center py-5"><a href="{{ route('admin.projects.create') }}"><button>Aggiungi Comic</button></a></div>
+        <div class="text-center py-5"><a href="{{ route('admin.projects.create') }}"><button class="btn btn-primary">Aggiungi Progetto</button></a></div>
             
     </div>
 

@@ -6,7 +6,7 @@
 
         <h1 class="mb-4 text-center">Aggiungi un Progetto</h1>
 
-        <form action="{{route('admin.projects.store')}}" method="POST">
+        <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
@@ -31,7 +31,7 @@
 
             <div class="mb-3">
                 <label for="src" class="form-label">Src immagine</label>
-                <input type="text" class="form-control @error('src') is-invalid @enderror" id="src" name="src" value="{{ old('src') }}">
+                <input type="file" class="form-control @error('src') is-invalid @enderror" id="src" name="src" value="{{ old('src') }}">
                 @error('src')
                     <div class="invalid-feedback">
                         {{$message}}

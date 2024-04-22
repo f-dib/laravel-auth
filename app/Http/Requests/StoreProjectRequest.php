@@ -24,7 +24,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'name' => 'required | max:255',
             'description' => 'required | max:5000',
-            'src' => 'required | max:1000',
+            'src' => 'required | file | max:1024 | mimes:jpg,bpm,png',
             'technology' => 'required | max:5000',
             'github_link' => 'required | max:1000',
             'date' => 'required | max:10',
@@ -37,7 +37,8 @@ class StoreProjectRequest extends FormRequest
             'name.max' => '* Il tuo nome ha superato il numero massimo di caratteri :max caratteri', 
             'description.required' => '* Devi inserire una descrizione valida',
             'description.max' => '* La tua descrizione ha superato il numero massimo di caratteri :max caratteri', 
-            'src.required' => '* Devi inserire un link valido', 
+            'src.required' => '* Devi inserire un\'immagine', 
+            'src.mimes' => '* Il file deve essere un\'immagine', 
             'src.max' => '* Il tuo link ha superato il numero massimo di caratteri :max caratteri', 
             'technology.required' => '* Devi inserire un testo valido',
             'technology.max' => '* Il tuo testo ha superato il numero massimo di caratteri :max caratteri', 
